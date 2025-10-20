@@ -1,14 +1,14 @@
 # UQAC_SI_SIEM
 Système de détection d'anomalies et de gestion de logs pour la sécurité des réseaux
 
-## Déscription du projet :
+## Description du projet :
 Ce projet fait partie du cours de sécurité informatique de l'UQAC. Il consiste à assembler différents outils existants afin de créer un système de détection d'anomalies et de gestion de logs pour identifier les menaces potentielles et améliorer la sécurité des réseaux.
 
 Nous avons implémenté 5 cas d'intrusion différents pour démontrer le bon fonctionnement de notre outil.
 
 ## Instructions d'installation :
 1. Installation de toutes les dépendances docker : Exécuter le fichier install_docker.sh
-2. Lancement des conteneurs docker des différents outils : Exécuter le fichier docker-compose.yml avec la commande "docker run docker-compose.yml"
+2. Lancement des conteneurs docker des différents outils : Exécuter le fichier docker-compose.yml avec la commande "sudo docker run docker-compose.yml"
 
 ## Instructions d'utilisation :
 
