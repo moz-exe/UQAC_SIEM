@@ -1,0 +1,18 @@
+{
+  "index_patterns": ["logs-*"],
+  "template": {
+    "mappings": {
+      "date_detection": false,
+      "properties": {
+        "@timestamp":       { "type": "date" },
+        "message":          { "type": "text" },
+        "event":            { "properties": { "dataset": { "type": "keyword" } } },
+        "host":             { "properties": { "name": { "type": "keyword" } } },
+        "process":          { "properties": { "name": { "type": "keyword" } } },
+        "source":           { "properties": { "ip": { "type": "ip" }, "port": { "type": "integer" } } },
+        "destination":      { "properties": { "ip": { "type": "ip" }, "port": { "type": "integer" } } }
+      }
+    },
+    "settings": { "number_of_shards": 1 }
+  }
+}
