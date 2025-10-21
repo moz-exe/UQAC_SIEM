@@ -68,6 +68,24 @@ services:
       elasticsearch:
         condition: service_healthy
 
+  snort:
+    image: ciscotalos/snort3:latest
+    container_name: snort
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    networks:
+      - elk
+    volumes:
+      - ./snort/etc/snort:/usr/local/etc/snort
+      - ./snort/log:/var/log/snort
+    command: >
+      snort -i eth0
+      -c /usr/local/etc/snort/snort.lua
+      -A alert_fast
+      -l /var/log/snort
+
 volumes:
   esdata:
 
