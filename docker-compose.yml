@@ -14,7 +14,7 @@ services:
     volumes:
       - esdata:/usr/share/elasticsearch/data
     networks:
-      - elk
+      - uqac_siem_elk
     mem_limit: 4g
     ulimits:
       memlock:
@@ -41,7 +41,7 @@ services:
     ports:
       - "5601:5601"
     networks:
-      - elk
+      - uqac_siem_elk
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -59,7 +59,7 @@ services:
       - ./syslog-ng/syslog-ng.conf:/etc/syslog-ng/syslog-ng.conf:ro
       - ./syslog-ng/state:/var/lib/syslog-ng
     networks:
-      - elk
+      - uqac_siem_elk
     read_only: true
     tmpfs:
       - /run/syslog-ng
@@ -76,18 +76,20 @@ services:
       - NET_ADMIN
       - NET_RAW
     networks:
-      - elk
+      - uqac_siem_elk
     volumes:
+      - ./snort.lua:/etc/snort/snort.lua
       - ./snort/etc/snort:/usr/local/etc/snort
       - ./snort/log:/var/log/snort
-    command: >
-      snort -i eth0
-      -c /usr/local/etc/snort/snort.lua
-      -A alert_fast
-      -l /var/log/snort
+    command: ["snort", "-i", "eth0", "-c", "/etc/snort/snort.lua"]
+    # command: >
+    #   snort -i eth0
+    #   -c /usr/local/etc/snort/snort.lua
+    #   -A alert_fast
+    #   -l /var/log/snort
 
 volumes:
   esdata:
 
 networks:
-  elk:
+  uqac_siem_elk:
