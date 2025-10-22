@@ -7,8 +7,14 @@ Ce projet fait partie du cours de sécurité informatique de l'UQAC pour le trim
 Nous avons implémenté 5 cas d'intrusion différents pour démontrer le bon fonctionnement de notre outil.
 
 ## Instructions d'installation :
-1. Installation de toutes les dépendances docker : Exécuter le fichier install_docker.sh
-2. Lancement des conteneurs docker des différents outils : Exécuter le fichier docker-compose.yml avec la commande "sudo docker run docker-compose.yml"
+1. Installation de toutes les dépendances docker : Exécuter le fichier install-docker.sh avec la commande :
+'''
+sh install-docker.sh
+'''
+2. Lancement des conteneurs docker des différents outils : Exécuter le fichier docker-compose.yml avec la commande :
+'''
+sudo docker run docker-compose.yml
+'''
 
 ## Instructions d'utilisation :
 
@@ -33,6 +39,16 @@ Nous avons implémenté 5 cas d'intrusion différents pour démontrer le bon fon
 4. Visualisation et analyse : Kibana récupère les logs d'elastic search et les affiche de manière graphique et compréhensible sur le [portail Kibana](http://localhost:5601/app/home).
 
 Pour plus d'information sur la manière dont les les outils sont utilisés, voir la [documentation](doc.md).
+
+## Scénarios d'attaque
+Nous avons répliqué 5 scénarios d'attque :
+- Attaque BruteForce SSH
+- Injection SQL
+- Scan de ports (Nmap)
+- Déni de service
+- Connection Telnet non-sécurisée
+
+Plus d'information dans le fichier [attack.md](attack.md)
 
 ## Avantages du projet :
 - Amélioration de la sécurité des réseaux

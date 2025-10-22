@@ -6,9 +6,13 @@ Ce projet utilise 4 outils :
 - Kibana
 
 # Architecture
-## Docker compose
-Pour utiliser Syslog-ng, Elasticsearch et Kibana, nous récupérons des images docker existantes à l'aide d'un docker compose.
+Le projet utilise un docker compose pour lancer tous les outils : le fichier [docker-compose.yml](docker-compose.yml) contient les informations de configuration de chaque outil :
+- Lien de l'image docker que l'on récupère et utilise
+- Variables d'environnement pour configurer le comportement du conteneur
+- Ports exposés de la machine physique et du conteneur docker
+- Répertoires auxquels le conteneur peut accéder
+- Mémoire autorisée
+- etc...
 
+Ainsi, la commande "sudo docker compose up -d" lance tous les conteneurs avec la bonne configuration pour communiquer entre eux dans le cadre de notre projet.
 
-## Snort
-On installe Snort avec le gestionnaire de paquets apt, et on configure une sortie qui va être où syslog-ng va venir récupérer ses logs.
