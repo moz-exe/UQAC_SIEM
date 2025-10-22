@@ -19,7 +19,13 @@ Nous avons implémenté 5 cas d'intrusion différents pour démontrer le bon fon
 - Kibana (Elastic License 2.0)
 
 ## Architecture du projet :
-<p style="text-align: center;">![schéma de l'architecture du projet](https://github.com/moz-exe/UQAC_SIEM/blob/main/schema_archi.png)</p>
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/moz-exe/UQAC_SIEM/blob/main/schema_archi.png" alt="schéma de l'architecture du projet" />
+    </td>
+  </tr>
+</table>
 
 1. Détection d'anomalies : Snort analyse le traffic réseau pour détecter des anomalies, c'est-à-dire des traces qui correspondent à des règles configurées manuellement.
 2. Collecte et Transfert des logs : Syslog-ng collecte les logs de Snort et les trasfère à ElasticSearch
