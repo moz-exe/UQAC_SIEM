@@ -10,7 +10,7 @@ services:
       - ES_JAVA_OPTS=-Xms2g -Xmx2g
       - bootstrap.memory_lock=true
     ports:
-      - "127.0.0.1:9200:9200"
+      - "9200:9200"
     volumes:
       - esdata:/usr/share/elasticsearch/data
     networks:
@@ -68,28 +68,9 @@ services:
       elasticsearch:
         condition: service_healthy
 
-  snort:
-    image: ciscotalos/snort3:latest
-    container_name: snort
-    restart: unless-stopped
-    cap_add:
-      - NET_ADMIN
-      - NET_RAW
-    networks:
-      - uqac_siem_elk
-    volumes:
-      - ./snort.lua:/etc/snort/snort.lua
-      - ./snort/etc/snort:/usr/local/etc/snort
-      - ./snort/log:/var/log/snort
-    command: ["snort", "-i", "eth0", "-c", "/etc/snort/snort.lua"]
-    # command: >
-    #   snort -i eth0
-    #   -c /usr/local/etc/snort/snort.lua
-    #   -A alert_fast
-    #   -l /var/log/snort
-
 volumes:
   esdata:
 
 networks:
   uqac_siem_elk:
+    name: uqac_siem_elk
