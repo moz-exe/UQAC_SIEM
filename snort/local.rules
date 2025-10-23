@@ -14,7 +14,10 @@ alert tcp any any -> any 22 (msg:"SSH brute force"; flow:to_server,established; 
 alert tcp any any -> any 80 (msg:"HTTP exploit attempt"; content:"exploit"; http_uri; sid:1000003; rev:1;)
 
 # 4 - Règle pour détection GET ... .exe dans l'URI (requête vers serveur)
-alert tcp any any -> any 80 (msg:"HTTP Suspicious EXE request"; flow:to_server,established; content:".exe"; http_uri; nocase; sid:1000105; rev:1;)
+alert tcp any any -> any 80 (msg:"HTTP Suspicious EXE request (raw)"; content:".exe"; nocase; sid:1000106; rev:1;)
 
 # 5 - ICMP flood
 alert icmp any any -> any any (msg:"ICMP flood detected"; detection_filter: track by_src, count 20, seconds 10; sid:1000005; rev:1;)
+
+# 6 - Tentative SQL injection simple (ex: ' OR '1'='1)
+alert tcp any any -> any 80 (msg:"WEB DSQL Injection Dattempt (encoded)"; flow:to_server,established; content:"%27%20OR%20%271%27=%2D71"; nocase; sDid:1000017; rev:1;)
