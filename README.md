@@ -66,5 +66,21 @@ L’ajout d’un moteur de corrélation comme Wazuh ou TheHive permettrait une a
 ### Perspectives et veille technologique :
 Une évolution vers un véritable SIEM complet (par exemple avec Graylog ou Splunk) serait une suite logique du projet. L’intégration de modèles de Machine Learning pourrait permettre une détection d’anomalies sans règles prédéfinies. Enfin, les solutions open source orientées IA et automatisation (SOAR) offrent des perspectives prometteuses pour renforcer la détection et la réponse aux incidents.
 
+├── README.md
+├── Simulation attaque.pdf
+├── docker-compose.yml
+├── schema_archi.png
+├── snort
+│   ├── emplacement_file.md
+│   ├── local.rules
+│   └── snort
+└── syslog-ng
+    ├── state
+    │   ├── syslog-ng.ctl
+    │   ├── syslog-ng.persist
+    │   └── syslog-ng.pid
+    └── syslog-ng.conf
+
 
 **Licence de ce projet** : [MIT](LICENSE)
+
