@@ -1,9 +1,0 @@
-# Utilise une image Alpine Linux minimale
-FROM alpine:latest
-
-# Installe Hydra et les dépendances nécessaires
-RUN apk update && apk upgrade && \
-    apk add --no-cache hydra openssh-client
-
-# Commande par défaut
-CMD ["hydra", "-l", "root", "-P", "/rockyou.txt", "127.0.0.1", "ssh", "-t", "4"]
