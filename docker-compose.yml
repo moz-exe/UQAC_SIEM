@@ -62,7 +62,7 @@ services:
 
     networks:
       - uqac_siem_elk
-    read_only: true
+    read_only: false
     tmpfs:
       - /run/syslog-ng
       - /tmp
