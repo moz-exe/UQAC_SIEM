@@ -14,11 +14,9 @@ alert tcp any any -> any 22 (msg:"SSH brute force"; flow:to_server,established; 
 alert tcp any any -> any 80 (msg:"HTTP exploit attempt"; content:"exploit"; http_uri; nocase; priority:2; sid:1000003; rev:1;)
 
 # 4 - Téléchargement exécutable suspect (.exe)
-alert tcp any any -> any 80 (msg:"HTTP Suspicious EXE request"; flow:to_server,established; content:".exe"; http_uri; nocase; priority:2; sid:1000106; rev:1;)
+alert tcp any any -> $HOME_NET $HTTP_PORTS \
+ (msg:"HTTP Suspicious EXE request (URI)"; flow:to_server; uricontent:".exe"; nocase; priority:2; sid:1001106; rev:2;)
+
 
 # 5 - ICMP flood (DoS)
 alert icmp any any -> any any (msg:"ICMP flood detected"; detection_filter: track by_src, count 20, seconds 10; priority:1; sid:1000005; rev:1;)
-
-# 6 - Tentative SQL injection simple
-alert tcp any any -> any 80 (msg:"WEB SQL Injection attempt"; flow:to_server,established; content:"' OR '1'='1"; nocase; priority:1; sid:1000017; rev:1;)
-
